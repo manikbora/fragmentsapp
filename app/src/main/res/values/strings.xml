@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Fragments App</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="login_form">Login Form</string>
+    <string name="user_name_hint">User Name</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn">Login</string>
+    <string name="registration_form">Registration Form</string>
+    <string name="register_btn">Register</string>
+    <string name="welcome_user_msg">Hello %1$s!!!\n\nWelcome to the Fragment Application</string>
+    <string name="logout_btn">Logout</string>
+    <string name="registration_success_msg">Registration Successful</string>
+    <string name="invalid_login_msg">Invalid login details. Try again!!!</string>
+    <string name="fragment_panel">Fragments Panel</string>
+    <string name="logged_out_msg">Hello user! You\'re logged out. Please login again…</string>
+
+</resources>
