@@ -9,8 +9,8 @@ import android.widget.Toast
 import com.example.fragmentsapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
-    private lateinit var _binding: FragmentHomeBinding
-    private val binding get() = _binding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var communicator: Communicator
 
     override fun onCreateView(

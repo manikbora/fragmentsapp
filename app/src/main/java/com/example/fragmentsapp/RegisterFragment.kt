@@ -13,8 +13,8 @@ import com.example.fragmentsapp.databinding.FragmentRegisterBinding
 class RegisterFragment : Fragment() {
     private lateinit var communicator: Communicator
 
-    private lateinit var _binding: FragmentRegisterBinding
-    private val binding get() = _binding
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

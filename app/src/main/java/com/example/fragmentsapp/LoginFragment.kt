@@ -13,8 +13,8 @@ import com.example.fragmentsapp.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
     private lateinit var communicator: Communicator
 
-    private lateinit var _binding: FragmentLoginBinding
-    private val binding get() = _binding
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
     private var loginStatus: Boolean = false
 
     override fun onCreateView(
