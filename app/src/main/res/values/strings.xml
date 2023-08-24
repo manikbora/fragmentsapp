@@ -13,6 +13,6 @@
     <string name="registration_success_msg">Registration Successful</string>
     <string name="invalid_login_msg">Invalid login details. Try again!!!</string>
     <string name="fragment_panel">Fragments Panel</string>
-    <string name="logged_out_msg">Hello user! You\'re logged out. Please login again…</string>
+    <string name="logged_out_msg">Hello %1$s! You\'re logged out. Please login again…</string>
 
 </resources>

@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
         view.findViewById<Button>(R.id.btnLogout).setOnClickListener {
             val loginFragment = LoginFragment()
             communicator.setFragment(loginFragment)
-            Toast.makeText(context, getString(R.string.logged_out_msg), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.logged_out_msg, name), Toast.LENGTH_LONG).show()
         }
 
         return view
