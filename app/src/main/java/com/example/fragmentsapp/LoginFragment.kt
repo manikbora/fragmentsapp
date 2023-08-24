@@ -8,35 +8,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.TextView
-import com.google.android.material.textfield.TextInputEditText
+import com.example.fragmentsapp.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
     private lateinit var communicator: Communicator
 
+    private lateinit var _binding: FragmentLoginBinding
+    private val binding get() = _binding
+    private var loginStatus: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        val view = binding.root
         communicator = activity as Communicator
 
-        val name = communicator.fetchData()
-        view.findViewById<Button>(R.id.btnLogin)
-            .setOnClickListener {
-                hideKeyboard()
-                val userName = view.findViewById<TextInputEditText>(R.id.etUserName).text.toString()
-                //val password = view.findViewById<TextInputEditText>(R.id.etPassword).text.toString()
-                if(name == userName) {
-                    val fragHome = HomeFragment()
-                    communicator.setFragment(fragHome)
-                } else {
-                    view.findViewById<TextView>(R.id.txtStatus)
-                        .text = getString(R.string.invalid_login_msg)
-                }
+
+        binding.btnLogin.setOnClickListener {
+            hideKeyboard()
+            val userName = binding.etUserName.text.toString()
+            val password = binding.etPassword.text.toString()
+            loginStatus = communicator.fetchData(userName, password)
+            if(loginStatus) {
+                val fragHome = HomeFragment()
+                communicator.setFragment(fragHome)
+            } else {
+                binding.txtStatus.text = getString(R.string.invalid_login_msg)
             }
+        }
 
 
         return view

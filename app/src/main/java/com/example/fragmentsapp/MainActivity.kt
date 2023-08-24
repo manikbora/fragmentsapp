@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity(), Communicator {
     private lateinit var fragManager: FragmentManager
     private lateinit var sharedPref: SharedPreferences
     private lateinit var editor: Editor
+    private var userName = ""
+    private var userPassword = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,11 +50,17 @@ class MainActivity : AppCompatActivity(), Communicator {
         editor.apply()
     }
 
-    override fun fetchData(): String {
-        val userName = sharedPref.getString("USER_NAME", "No Name").toString()
-        if(userName != "No Name") {
-            return userName
+    override fun fetchData(name: String, password: String): Boolean {
+        userName = sharedPref.getString("USER_NAME", "No Name").toString()
+        userPassword = sharedPref.getString("PASSWORD", "No Password").toString()
+        if(name == userName && password == userPassword) {
+            return true
         }
+        return false
+    }
+
+    override fun fetchData(): String {
+        userName = sharedPref.getString("USER_NAME", "No Name").toString()
         return userName
     }
 }

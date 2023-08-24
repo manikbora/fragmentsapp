@@ -8,29 +8,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.TextView
-import com.google.android.material.textfield.TextInputEditText
+import com.example.fragmentsapp.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
     private lateinit var communicator: Communicator
 
+    private lateinit var _binding: FragmentRegisterBinding
+    private val binding get() = _binding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_register, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        val view = binding.root
         communicator = activity as Communicator
 
-        view.findViewById<Button>(R.id.btnRegister).setOnClickListener {
+        binding.btnRegister.setOnClickListener {
             hideKeyboard()
-            val userName = view.findViewById<TextInputEditText>(R.id.etUserName).text.toString()
-            val password = view.findViewById<TextInputEditText>(R.id.etPassword).text.toString()
+            val userName = binding.etUserName.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
 
-            communicator.saveData(userName, password)
-            view.findViewById<TextView>(R.id.txtStatus)
-                .text = getString(R.string.registration_success_msg)
+            if(userName != "" && password != "") {
+                communicator.saveData(userName, password)
+                binding.txtStatus.text = getString(R.string.registration_success_msg)
+            } else {
+                binding.txtStatus.text = getString(R.string.please_provide_complete_information)
+            }
+
         }
 
         return view

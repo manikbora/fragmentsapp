@@ -14,5 +14,6 @@
     <string name="invalid_login_msg">Invalid login details. Try again!!!</string>
     <string name="fragment_panel">Fragments Panel</string>
     <string name="logged_out_msg">Hello %1$s! You\'re logged out. Please login again…</string>
+    <string name="please_provide_complete_information">Please provide complete information!!!</string>
 
 </resources>

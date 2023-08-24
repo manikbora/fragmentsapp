@@ -5,33 +5,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
+import com.example.fragmentsapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+    private lateinit var _binding: FragmentHomeBinding
+    private val binding get() = _binding
     private lateinit var communicator: Communicator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val view = binding.root
         communicator = activity as Communicator
 
         val name = communicator.fetchData()
-        view.findViewById<TextView>(R.id.txtWelcome)
-            .text = getString(R.string.welcome_user_msg, name.uppercase())
+        binding.txtWelcome.text = getString(R.string.welcome_user_msg, name.uppercase())
 
-        view.findViewById<Button>(R.id.btnLogout).setOnClickListener {
+        binding.btnLogout.setOnClickListener {
             val loginFragment = LoginFragment()
             communicator.setFragment(loginFragment)
             Toast.makeText(context, getString(R.string.logged_out_msg, name), Toast.LENGTH_LONG).show()
         }
-
         return view
-
     }
 
 }
