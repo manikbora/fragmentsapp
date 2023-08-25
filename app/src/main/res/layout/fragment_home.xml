@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/custom_background"
     tools:context=".HomeFragment">
 
     <TextView
@@ -21,9 +20,9 @@
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16sp"
+        android:layout_weight="1"
         android:text="@string/logout_btn"
         android:textSize="18sp" />
 
