@@ -45,14 +45,14 @@ class MainActivity : AppCompatActivity(), Communicator {
     }
 
     override fun saveData(userName: String, password: String) {
-        editor.putString("USER_NAME", userName)
-        editor.putString("PASSWORD", password)
+        editor.putString("NAME_KEY", userName)
+        editor.putString("PASSWORD_KEY", password)
         editor.apply()
     }
 
     override fun fetchData(name: String, password: String): Boolean {
-        userName = sharedPref.getString("USER_NAME", "No Name").toString()
-        userPassword = sharedPref.getString("PASSWORD", "No Password").toString()
+        userName = sharedPref.getString("NAME_KEY", "No Name").toString()
+        userPassword = sharedPref.getString("PASSWORD_KEY", "No Password").toString()
         if(name == userName && password == userPassword) {
             return true
         }
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), Communicator {
     }
 
     override fun fetchData(): String {
-        userName = sharedPref.getString("USER_NAME", "No Name").toString()
+        userName = sharedPref.getString("NAME_KEY", "No Name").toString()
         return userName
     }
 }
