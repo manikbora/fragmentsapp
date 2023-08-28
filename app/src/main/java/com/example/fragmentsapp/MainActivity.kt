@@ -44,16 +44,16 @@ class MainActivity : AppCompatActivity(), Communicator {
             .commit()
     }
 
-    override fun saveData(userName: String, password: String) {
-        editor.putString("NAME_KEY", userName)
-        editor.putString("PASSWORD_KEY", password)
+    override fun saveData(nm: String, pass: String) {
+        editor.putString("NAME_KEY", nm)
+        editor.putString("PASSWORD_KEY", pass)
         editor.apply()
     }
 
-    override fun fetchData(name: String, password: String): Boolean {
+    override fun fetchData(nm: String, pass: String): Boolean {
         userName = sharedPref.getString("NAME_KEY", "No Name").toString()
         userPassword = sharedPref.getString("PASSWORD_KEY", "No Password").toString()
-        if(name == userName && password == userPassword) {
+        if(nm == userName && pass == userPassword) {
             return true
         }
         return false
